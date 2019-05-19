@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>Data Penduduk</title>
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var url = "https://tugasutsrest.000webhostapp.com/appcordova/www/json.php";
+        $.getJSON(url, function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                var id = field.id;
+                var nama_lengkap = field.nama_lengkap;
+                var NIK = field.NIK;
+                var jenis_kelamin = field.jenis_kelamin;
+                var TTL = field.TTL;
+                var agama = field.agama;
+                var pekerjaan = field.pekerjaan;
+                $("#listview").append("<a class='item' href='form.html?id=" + id + "&nama_lengkap=" + nama_lengkap + "&NIK=" + NIK + "&jenis_kelamin=" + jenis_kelamin + "&TTL=" + TTL + "&agama=" + agama + "&pekerjaan=" + pekerjaan + "'><h2>" + nama_lengkap + " </h2><p>" + NIK + "</p><p>" + jenis_kelamin + "</p><p>" + TTL + "</p><p>" + agama + "</p><p>" + pekerjaan + "</p></a>");
+            });
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
+        <a href="index.html" class="button button-clear">Home</a>
+        <h1 class="title">Read Database (JSON)</h1>
+    </div>
+    <br/>
+    <br/>
+    <ul class="list" id="listview">
+    </ul>
+</body>
+
+</html>
